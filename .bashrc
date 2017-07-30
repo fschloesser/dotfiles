@@ -4,15 +4,17 @@ if [ -f /etc/bash.bashrc ]; then
         . /etc/bash.bashrc
 fi
 
-#
-
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 # Bash includes filenames beginning with a ‘.’ in the results of filename expansion
 shopt -s dotglob
 # If set, the history list is appended to the file named by the value of the HISTFILE variable when the shell exits, rather than overwriting the file.
 shopt -s histappend
 # length of history
 export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=5000
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
 ###########################
 ##### Path
@@ -34,9 +36,9 @@ alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-alias grep='grep --color'
-alias egrep='egrep --color'
-alias fgrep='fgrep --color'
+alias grep='grep --color -n'
+alias egrep='egrep --color -n'
+alias fgrep='fgrep --color -n'
 
 source ~/.bash_aliases
 
@@ -51,22 +53,31 @@ source ~/.git_completion.sh
 
 # set bef = '<'\!'>'
 export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
-alias precmd='set prompt="%B%n@%m [%P] %{\033[34m%}%~ %{\033[31m%}`$GIT_REF`%{\033[60m%} \n ${bef} "'
-export BCFG_BLACK=30
-export BCFG_RED=31
-export BCFG_GREEN=32
-export BCFG_YELLOW=33
-export BCFG_BLUE=34
-export BCFG_PURPLE=35
-export BCFG_CYAN=36
-export BCFG_WHITE=37
+PS_PRE='\[\e['
+PS_POS='m\]'
+PS_ENDCOLOR='\[\e[m\]' 
 
+PS_NEWLINE='\n'
+PS_USER='\u'
+PS_HOST='\h'
+PS_DATETIME='[\D{%d.%m.%y} - \t]'
+PS_CURRDIR='\w'
+PS_GIT='$(__git_ps1 "(%s)")'
+
+PS1=''
+PS1+=${PS_NEWLINE}
+PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
 if git --version &>/dev/null;
 then
-   PS1='\n\[\e[1;${BCFG_BLACK}m\]\u@\h:[\D{%d.%m.%y} - \t]\[\e[m\] \[\e[1;${BCFG_BLUE}m\]\w\[\e[m\] \[\e[1;${BCFG_RED}m\]$(__git_ps1 "(%s)")\[\e[m\]\n\[\e[1;${BCFG_PURPLE}m\]>>\[\e[m\] '
+   PS1+=${PS_PRE}'38;5;141'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
 else
-   PS1='\n\[\e[1;${BCFG_BLACK}m\]\u@\h:[\D{%d.%m.%y} - \t]\[\e[m\] \[\e[1;${BCFG_BLUE}m\]\w\[\e[m\]\n\[\e[0;${BCFG_PURPLE}m\]>>\[\e[m\] '
+   PS1+=''
 fi
+PS1+=${PS_NEWLINE}
+PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;112'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+PS1+=${PS_NEWLINE}
+PS1+=${PS_PRE}'38;5;226'${PS_POS}'>> '${PS_ENDCOLOR}
 
 ###########################
 ##### 

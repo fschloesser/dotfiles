@@ -10,6 +10,19 @@ filetype indent on
 
 " clipboard support
 set clipboard=unnamed
+" no compatible mode
+set nocp
+set relativenumber
+set number
+
+" toggle pastemode
+set pastetoggle=<F5>
+
+" conf for yml files
+autocmd FileType yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
+
+" Tags
+set tags=./tags,./TAGS,tags,TAGS
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -28,7 +41,7 @@ else
 endif
 
 " Always show current position
-" set ruler
+set ruler
 
 " A buffer becomes hidden when it is abandoned
 " set hid
@@ -51,7 +64,7 @@ set incsearch
 set lazyredraw 
 
 " For regular expressions turn magic on
-" set magic
+set magic
 
 " Show matching brackets when cursor is over them
 set showmatch 
@@ -78,7 +91,7 @@ endif
 " desert, peachpuff etc
 colorscheme peachpuff
 
-set background=light
+" set background=light
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -136,6 +149,11 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> l
 map <c-space> h
+map <space><space> :
+imap <space><space> <esc>
+set timeout
+set ttimeout
+set timeoutlen=190 ttimeoutlen=190
 
 " move around split windows
 map <C-j> <C-W>j
