@@ -66,18 +66,19 @@ PS_GIT='$(__git_ps1 "(%s)")'
 
 PS1=''
 PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
 if git --version &>/dev/null;
 then
-   PS1+=${PS_PRE}'38;5;141'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
+   PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
 else
    PS1+=''
 fi
 PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-PS1+=${PS_PRE}'38;5;112'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
-PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;226'${PS_POS}'>> '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;16'${PS_POS}'>> '${PS_ENDCOLOR}
+
+# set your terminal background to #dddddd and foreground to #222222
 
 ###########################
 ##### 
