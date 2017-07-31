@@ -53,7 +53,7 @@ source ~/.git_completion.sh
 
 # set bef = '<'\!'>'
 export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
-PS_PRE='\[\e['
+PS_PRE='\[\e[1m\e['
 PS_POS='m\]'
 PS_ENDCOLOR='\[\e[m\]' 
 
@@ -66,7 +66,7 @@ PS_GIT='$(__git_ps1 "(%s)")'
 
 PS1=''
 PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
 PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
 PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
 if git --version &>/dev/null;
