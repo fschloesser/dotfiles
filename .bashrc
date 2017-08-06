@@ -98,6 +98,7 @@ bind '"\e[6;5~":menu-complete'                  # Ctrl-PageUp
 ##### Keyboard
 ###########################
 # set american keyboard layout 
+# setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
 setxkbmap us
 # make capslock yet another ctrl
 setxkbmap -option ctrl:nocaps
