@@ -20,9 +20,10 @@ set pastetoggle=<F5>
 
 " conf for yml files
 autocmd FileType yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 
 " Tags
-set tags=./tags,./TAGS,tags,TAGS
+set tags=./tags,./TAGS,tags,TAGS,TAGS;
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -149,7 +150,10 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> l
 map <c-space> h
-map <space><space> :
+imap hh <esc>
+imap jj <esc>
+imap kk <esc>
+imap lll <esc>
 imap <space><space> <esc>
 set timeout
 set ttimeout
@@ -188,6 +192,6 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 

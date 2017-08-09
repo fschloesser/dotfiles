@@ -13,8 +13,8 @@ shopt -s dotglob
 shopt -s histappend
 # length of history
 export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=1000
-export HISTFILESIZE=2000
+export HISTSIZE=5000
+export HISTFILESIZE=5000
 
 ###########################
 ##### Path
@@ -37,6 +37,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias grep='grep --color -n'
+alias rgrep='rgrep --color -n'
 alias egrep='egrep --color -n'
 alias fgrep='fgrep --color -n'
 

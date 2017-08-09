@@ -9,5 +9,19 @@
     branch = auto
     interactive = auto
     diff = auto
+[alias]
+    stat = status
+    st   = status
+    ci   = commit
+    cii  = commit --interactive
+    civ  = commit --verbose
+    br   = branch
+    co   = checkout
+    rh   = reset --hard
+    changes = diff --name-status
+    hash = describe --always --dirty
+    lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
 [push]
     default = simple
