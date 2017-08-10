@@ -92,15 +92,59 @@ endif
 " desert, peachpuff etc
 colorscheme peachpuff
 
-" set background=light
+set background=light
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" set colors of statusbar
-hi Statusline ctermbg=grey ctermfg=darkgrey
+" set colors of STATUSBAR
+let g:currentmode={ 'n'  : 'N ',
+    \ 'no' : 'N·Operator Pending ',
+    \ 'v'  : 'V ',
+    \ 'V'  : 'V·Line ',
+    \ '^V' : 'V·Block ',
+    \ 's'  : 'Select ',
+    \ 'S'  : 'S·Line ',
+    \ '^S' : 'S·Block ',
+    \ 'i'  : 'I ',
+    \ 'R'  : 'R ',
+    \ 'Rv' : 'V·Replace ',
+    \ 'c'  : 'Command ',
+    \ 'cv' : 'Vim Ex ',
+    \ 'ce' : 'Ex ',
+    \ 'r'  : 'Prompt ',
+    \ 'rm' : 'More ',
+    \ 'r?' : 'Confirm ',
+    \ '!'  : 'Shell ',
+    \ 't'  : 'Terminal ',
+    \}
+
+" :runtime syntax/colortest.vim
+function! InsertStatuslineColor()
+  if (mode() =~# '\v(n|no)')
+    hi! StatusLine ctermfg=blue
+  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
+    hi! StatusLine ctermfg=yellow
+  elseif (mode() ==# 'i')
+    hi! StatusLine ctermfg=magenta
+  else
+    hi! StatusLine ctermfg=darkgreen
+  endif
+  return ''
+endfunction
+
+" Format the statusline
+set statusline=
+set statusline+=%{InsertStatuslineColor()}               " Changing the statusline color
+set statusline+=%*\ %{toupper(g:currentmode[mode()])}   " Current mode
+set statusline+=%*\ [%n]                                " buffernr
+set statusline+=%*
+set statusline+=%*\ %=                                  " Space
+set statusline+=%*\ %y\                                 " FileType
+set statusline+=%*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
+set statusline+=%*\ %3p%%\ -\ %l:\ %3c\                 " Rownumber/total (%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
