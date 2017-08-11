@@ -130,21 +130,22 @@ function! InsertStatuslineColor()
   elseif (mode() ==# 'i')
     hi! StatusLine ctermfg=magenta
   else
-    hi! StatusLine ctermfg=darkgreen
+    hi! StatusLine ctermfg=grey
   endif
   return ''
 endfunction
 
 " Format the statusline
 set statusline=
-set statusline+=%{InsertStatuslineColor()}               " Changing the statusline color
+set statusline+=%{InsertStatuslineColor()}              " Changing the statusline color
 set statusline+=%*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%*\ [%n]                                " buffernr
+set statusline+=%*\ %f                                " buffernr
 set statusline+=%*
 set statusline+=%*\ %=                                  " Space
 set statusline+=%*\ %y\                                 " FileType
 set statusline+=%*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%*\ %3p%%\ -\ %l:\ %3c\                 " Rownumber/total (%)
+set statusline+=%*\ %3p%%\ \ [%l:%3c]                   " Rownumber/total (%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
