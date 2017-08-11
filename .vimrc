@@ -23,7 +23,7 @@ autocmd FileType yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 
 " Tags
-set tags=./tags,./TAGS,tags,TAGS,TAGS;
+set tags=./tags,./TAGS,tags,TAGS,~/.TAGS;
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface

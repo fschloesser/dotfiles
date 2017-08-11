@@ -4,6 +4,18 @@ if [ -f /etc/bash.bashrc ]; then
         . /etc/bash.bashrc
 fi
 
+##########################
+##### USER SPECIFIC
+##########################
+# this command is generating the tagsfile for vim.
+# ctags -R -o ~/.TAGS ~/git ~/projects
+# However this could take a while. To make it an hourly cronjob with this:
+# * 1 * * * ctags -R -o ~/.TAGS ~/git ~/projects
+# To set it up, you could use 'crontab -l', 'crontab -e', and 'crontab -r'
+
+##########################
+##### history and terminal
+##########################
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -37,7 +49,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias grep='grep --color -n'
-alias rgrep='rgrep --color -n'
+alias rgrep='rgrep --color'
 alias egrep='egrep --color -n'
 alias fgrep='fgrep --color -n'
 
