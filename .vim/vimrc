@@ -1,9 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -47,28 +44,28 @@ set ruler
 " A buffer becomes hidden when it is abandoned
 " set hid
 
-" backspace config 
+" backspace config
 set backspace=eol,start,indent
-" wrap cursor at beginning and end of line 
+" wrap cursor at beginning and end of line
 " set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
-" Highlight search 
+" Highlight search
 set hlsearch
-" incremental search 
-set incsearch 
+" incremental search
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when cursor is over them
-set showmatch 
+set showmatch
 " How long to blink when matching brackets
 set mat=2
 
@@ -82,7 +79,7 @@ set tm=500
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -140,7 +137,7 @@ set statusline=
 set statusline+=%{InsertStatuslineColor()}              " Changing the statusline color
 set statusline+=%*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%*\ [%n]                                " buffernr
-set statusline+=%*\ %f                                " buffernr
+set statusline+=%*\ %f                                  " buffernr
 set statusline+=%*
 set statusline+=%*\ %=                                  " Space
 set statusline+=%*\ %y\                                 " FileType
@@ -153,9 +150,15 @@ set statusline+=%*\ %3p%%\ \ [%l:%3c]                   " Rownumber/total (%)
 " Turn backup off
 set nobackup
 set nowb
-" leave swapping in 
+" leave swapping in
 set swapfile
 
+" Keep history between sessions
+set undofile
+set undodir=~/.vim/undodir
+
+" Sets how many lines of history vim remembers
+set history=500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -237,6 +240,6 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *rc,*.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
