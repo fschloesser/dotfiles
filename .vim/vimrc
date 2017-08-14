@@ -97,14 +97,15 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " set colors of STATUSBAR
-let g:currentmode={ 'n'  : 'N ',
+let g:currentmode={
+    \ "\<C-v>" : 'V·Block',
+    \ 'n'  : 'N ',
     \ 'no' : 'N·Operator Pending ',
     \ 'v'  : 'V ',
     \ 'V'  : 'V·Line ',
-    \ '^V' : 'V·Block ',
     \ 's'  : 'Select ',
     \ 'S'  : 'S·Line ',
-    \ '^S' : 'S·Block ',
+    \ "\<C-s>" : 'S·Block ',
     \ 'i'  : 'I ',
     \ 'R'  : 'R ',
     \ 'Rv' : 'V·Replace ',
