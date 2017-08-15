@@ -41,8 +41,8 @@ endif
 " Always show current position
 set ruler
 
-" A buffer becomes hidden when it is abandoned
-" set hid
+" Show preview of latex and markdown
+set conceallevel=2
 
 " backspace config
 set backspace=eol,start,indent

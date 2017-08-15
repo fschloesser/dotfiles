@@ -36,22 +36,25 @@ export PATH="./:${HOME}/.local/bin:/usr/local/bin:/bin:/usr/bin:/usr/ucb:/usr/bi
 export INPUTRC=~/.inputrc
 
 ###########################
-##### Aliases  
+##### Aliases
 ###########################
 shopt -s expand_aliases
 
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
 alias ll='ls -la --color=auto'
+alias l='ls --color=auto'
 alias ..='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-alias grep='grep --color -n'
-alias rgrep='rgrep --color'
-alias egrep='egrep --color -n'
-alias fgrep='fgrep --color -n'
+alias grep='grep -I --color -n'
+alias rgrep='rgrep -I --color'
+alias igrep='grep -i -I --color -n'
+alias rigrep='rgrep -i -I --color -n'
+alias egrep='egrep --color -I -n'
+alias fgrep='fgrep --color -I -n'
 
 source ~/.bash_aliases
 
@@ -68,7 +71,7 @@ source ~/.git_completion.sh
 export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
 PS_PRE='\[\e[1m\e['
 PS_POS='m\]'
-PS_ENDCOLOR='\[\e[m\]' 
+PS_ENDCOLOR='\[\e[m\]'
 
 PS_NEWLINE='\n'
 PS_USER='\u'
@@ -94,7 +97,7 @@ PS1+=${PS_PRE}'38;5;16'${PS_POS}'>> '${PS_ENDCOLOR}
 # set your terminal background to #dddddd and foreground to #222222
 
 ###########################
-##### 
+#####
 ###########################
 bind '"\e[1;5D": backward-word' # ~ for xterm
 bind '"\e[1;5C": forward-word'
@@ -110,7 +113,7 @@ bind '"\e[6;5~":menu-complete'                  # Ctrl-PageUp
 ###########################
 ##### Keyboard
 ###########################
-# set american keyboard layout 
+# set american keyboard layout
 # setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
 setxkbmap us
 # make capslock yet another ctrl
