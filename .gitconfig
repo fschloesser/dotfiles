@@ -12,6 +12,7 @@
 [alias]
     stat = status
     st   = status
+    df   = diff
     ci   = commit
     cii  = commit --interactive
     civ  = commit --verbose
