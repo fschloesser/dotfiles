@@ -156,12 +156,17 @@ bar {
 }
 
 # Custom Thinkpad key mappings
+# use 'xev' to find out keys
 # Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessDown exec xrandr --output eDP-1 --brightness 0.5
 bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1
+
+# Touchpad enable disable
+bindsym XF86WLAN exec xinput set-prop 11 "Device Enabled" 0
+bindsym XF86Tools exec xinput set-prop 11 "Device Enabled" 1
 
