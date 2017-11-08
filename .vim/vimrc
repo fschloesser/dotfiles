@@ -6,7 +6,7 @@ filetype plugin on
 filetype indent on
 
 " clipboard support
-set clipboard=unnamed
+set clipboard=unnamedplus
 " no compatible mode
 set nocp
 set relativenumber
@@ -199,14 +199,14 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> l
 map <c-space> h
-imap hh <esc>
-imap jj <esc>
-imap kk <esc>
-imap lll <esc>
-imap <space><space> <esc>
-set timeout
-set ttimeout
-set timeoutlen=190 ttimeoutlen=190
+" imap hh <esc>
+" imap jj <esc>
+" imap kk <esc>
+" imap lll <esc>
+" imap <space><space> <esc>
+" set timeout
+" set ttimeout
+" set timeoutlen=190 ttimeoutlen=190
 
 " move around split windows
 map <C-j> <C-W>j
@@ -224,6 +224,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Always show the status line
 set laststatus=2
 
+set cmdheight=2
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -231,7 +233,7 @@ set laststatus=2
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Delete trailing white space on save, useful for some filetypes ;)
+" Delete trailing whitespace on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
@@ -241,6 +243,6 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *rc,*.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.jenkins,*rc,*.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
