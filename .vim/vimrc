@@ -16,7 +16,7 @@ set number
 set pastetoggle=<F5>
 
 " conf for yml files
-autocmd FileType yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType htmldjango,xml,html,htm,yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 
 " Tags
@@ -244,5 +244,5 @@ endfun
 
 if has("autocmd")
     autocmd BufWritePre *.jenkins,*rc,*.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
+    autocmd BufWritePre * :call CleanExtraSpaces()
 
