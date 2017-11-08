@@ -54,7 +54,7 @@ set ignorecase
 " When searching try to be smart about cases
 set smartcase
 " Highlight search
-set hlsearch
+" set hlsearch
 " incremental search
 set incsearch
 
@@ -87,11 +87,17 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " desert, peachpuff etc
-colorscheme peachpuff
+" colorscheme peachpuff
+set termguicolors
+colorscheme colibri
 
 set background=light
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
+" color the 100th column, useful for conventions
+highlight ColorColumn ctermbg=gray
+set colorcolumn=100
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -243,6 +249,6 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.jenkins,*rc,*.c,*.h,*.cpp,*.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
     autocmd BufWritePre * :call CleanExtraSpaces()
+endif
 

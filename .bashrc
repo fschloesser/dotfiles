@@ -41,6 +41,7 @@ export INPUTRC=~/.inputrc
 ###########################
 shopt -s expand_aliases
 
+alias setbrightness="xrandr --output eDP-1 --brightness "
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
 alias ll='ls -la --color=auto'
