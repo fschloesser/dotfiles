@@ -73,30 +73,41 @@ source ~/.git_completion.sh
 
 # set bef = '<'\!'>'
 export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
-PS_PRE='\[\e[1m\e['
-PS_POS='m\]'
-PS_ENDCOLOR='\[\e[m\]'
 
-PS_NEWLINE='\n'
-PS_USER='\u'
-PS_HOST='\h'
-PS_DATETIME='[\D{%d.%m.%y} - \t]'
-PS_CURRDIR='\w'
-PS_GIT='$(__git_ps1 "(%s)")'
+PROMPT_COMMAND=__prompt_command
 
-PS1=''
-PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
-PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
-if git --version &>/dev/null;
-then
-   PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
-else
-   PS1+=''
-fi
-PS1+=${PS_NEWLINE}
-PS1+=${PS_PRE}'38;5;16'${PS_POS}'>> '${PS_ENDCOLOR}
+__prompt_command() {
+    local EXIT="$?"
+    PS_PRE='\[\e[1m\e['
+    PS_POS='m\]'
+    PS_ENDCOLOR='\[\e[m\]'
+
+    PS_NEWLINE='\n'
+    PS_USER='\u'
+    PS_HOST='\h'
+    PS_DATETIME='[\D{%d.%m.%y} - \t]'
+    PS_CURRDIR='\w'
+    PS_GIT='$(__git_ps1 "(%s)")'
+
+    PS1=''
+    PS1+=${PS_NEWLINE}
+    PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+    if git --version &>/dev/null;
+    then
+       PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
+    else
+       PS1+=''
+    fi
+    PS1+=${PS_NEWLINE}
+    if [ $EXIT != 0 ]; then
+        PS1+=${PS_PRE}'38;5;161'${PS_POS}${EXIT}${PS_ENDCOLOR}
+    else
+        PS1+=${PS_PRE}'38;5;30'${PS_POS}${EXIT}${PS_ENDCOLOR}
+    fi
+    PS1+=${PS_PRE}'38;5;16'${PS_POS}' >> '${PS_ENDCOLOR}
+}
 
 # set your terminal background to #dddddd and foreground to #222222
 
