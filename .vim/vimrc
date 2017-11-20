@@ -54,7 +54,7 @@ set ignorecase
 " When searching try to be smart about cases
 set smartcase
 " Highlight search
-" set hlsearch
+set hlsearch
 " incremental search
 set incsearch
 
@@ -87,9 +87,15 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " desert, peachpuff etc
-" colorscheme peachpuff
-set termguicolors
-colorscheme colibri
+if has('termguicolors')
+    " use guifg/guibg instead of ctermfg/ctermbg in terminal
+    set termguicolors
+    " colorscheme from https://github.com/archSeer/colibri.vim
+    set background=dark
+    colorscheme colibri
+else
+    colorscheme peachpuff
+endif
 
 set background=light
 " Set utf8 as standard encoding and en_US as the standard language
