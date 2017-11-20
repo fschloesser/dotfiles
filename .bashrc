@@ -102,7 +102,10 @@ __prompt_command() {
     fi
     PS1+=${PS_NEWLINE}
     if [ $EXIT != 0 ]; then
+        # 128+n: Fatal error signal "n"
+        declare -A ERRCODES=( [1]=" general error" [2]=" misuse of shell buildins" [126]=" command invoked cannot execute" [127]=" command not found" [128]=" invalid argument to exit" [130]=" script terminated by control-c" [255]=" exit status out of range" )
         PS1+=${PS_PRE}'38;5;161'${PS_POS}${EXIT}${PS_ENDCOLOR}
+        PS1+=${PS_PRE}'38;5;16'${PS_POS}${ERRCODES[${EXIT}]}${PS_ENDCOLOR}
     else
         PS1+=${PS_PRE}'38;5;30'${PS_POS}${EXIT}${PS_ENDCOLOR}
     fi
