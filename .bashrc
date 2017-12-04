@@ -77,7 +77,16 @@ export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.
 PROMPT_COMMAND=__prompt_command
 
 __prompt_command() {
+    # get exitcode
     local EXIT="$?"
+
+    # get python virtualenv context
+    if test -z "$VIRTUAL_ENV" ; then
+        PYTHON_VIRTUALENV=""
+    else
+        PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`]"
+    fi
+
     PS_PRE='\[\e[1m\e['
     PS_POS='m\]'
     PS_ENDCOLOR='\[\e[m\]'
@@ -89,7 +98,7 @@ __prompt_command() {
     PS_CURRDIR='\w'
     PS_GIT='$(__git_ps1 "(%s)")'
 
-    PS1=''
+    PS1=${PYTHON_VIRTUALENV}
     PS1+=${PS_NEWLINE}
     PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
     PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
