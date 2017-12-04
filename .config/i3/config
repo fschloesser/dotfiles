@@ -170,4 +170,16 @@ bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1
 bindsym XF86WLAN exec xinput set-prop 11 "Device Enabled" 0
 bindsym XF86Tools exec xinput set-prop 11 "Device Enabled" 1
 
+# switch to workspace
+bindsym $mod+p workspace 11
+bindsym $mod+Shift+p move container to workspace 11
+workspace 11 output HDMI-1
+# find projector and display name: xrandr
+# to enable projector
+# xrandr --output HDMI-2 --auto --right-of eDP-1
+# to disable projector
+# xrandr --output HDMI-2 --off
+
 exec --no-startup-id nm-applet
+exec --no-startup-id xhost +local:
+exec --no-startup-id icedove
