@@ -42,6 +42,8 @@ export INPUTRC=~/.inputrc
 shopt -s expand_aliases
 
 alias setbrightness="xrandr --output eDP-1 --brightness "
+alias setlowresolution="xrandr --output eDP-1 --mode 1360x768"
+alias sethighresolution="xrandr --output eDP-1 --mode 1920x1080"
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
 alias ll='ls -la --color=auto'
@@ -59,6 +61,9 @@ alias rigrep='rgrep -i -I --color -n'
 alias egrep='egrep --color -I -n'
 alias fgrep='fgrep --color -I -n'
 alias sourcebashrc='source ~/.bashrc'
+
+alias activateprojector='xrandr --output HDMI-2 --auto --right-of eDP-1'
+alias deactivateprojector='xrandr --output HDMI-2 --off'
 
 source ~/.bash_aliases
 

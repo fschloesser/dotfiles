@@ -16,9 +16,9 @@ set number
 set pastetoggle=<F5>
 
 " conf for yml files
-autocmd FileType htmldjango,xml,html,htm,yaml,yml,sls setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
 autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// ts=3 sw=3
+autocmd FileType htmldjango,xml,xhtml,html,htm,yaml,yml,sls,js,css setlocal ts=2 sts=2 sw=2 expandtab smarttab
 
 " Tags
 set tags=./tags,./TAGS,tags,TAGS,~/.TAGS;
@@ -93,15 +93,16 @@ if has('termguicolors')
     set termguicolors
     " colorscheme from https://github.com/archSeer/colibri.vim
     set background=dark
-    colorscheme colibri
+    "colorscheme colibri
+    colorscheme desert
 else
     " colorscheme from https://github.com/liuchengxu/space-vim-dark
 	colorscheme space-vim-dark
+    set background=light
     hi Comment cterm=italic
 	"colorscheme peachpuff
 endif
 
-set background=light
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
