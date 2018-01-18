@@ -108,6 +108,11 @@ __prompt_command() {
     PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
     PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
     PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+
+    #PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+    #PS1+=${PS_PRE}'38;5;32'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+    #PS1+=${PS_PRE}'38;5;160'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+
     if git --version &>/dev/null;
     then
        PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
