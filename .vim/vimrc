@@ -82,26 +82,10 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
-" desert, peachpuff etc
-if has('termguicolors')
-    " use guifg/guibg instead of ctermfg/ctermbg in terminal
-    set termguicolors
-    " colorscheme from https://github.com/archSeer/colibri.vim
-    set background=dark
-    "colorscheme colibri
-    colorscheme desert
-else
-    " colorscheme from https://github.com/liuchengxu/space-vim-dark
-	colorscheme space-vim-dark
-    set background=light
-    hi Comment cterm=italic
-	"colorscheme peachpuff
-endif
+" colorscheme: https://github.com/reedes/vim-colors-pencil/blob/master/colors/pencil.vim
+colorscheme pencil
+" colorscheme peachpuff
+set background=light
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
