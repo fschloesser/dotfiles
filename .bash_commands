@@ -2,6 +2,8 @@
 
 shopt -s expand_aliases
 
+alias vim="vim --servername vim"
+
 alias setbrightness="xrandr --output eDP-1 --brightness "
 alias setlowresolution="xrandr --output eDP-1 --mode 1360x768"
 alias sethighresolution="xrandr --output eDP-1 --mode 1920x1080"
