@@ -1,0 +1,71 @@
+#! /bin/bash
+
+# load git prompt
+source ~/.git_prompt.sh
+# load git completion
+source ~/.git_completion.sh
+
+# set bef = '<'\!'>'
+export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
+
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    # get exitcode
+    local EXIT="$?"
+
+    # get python virtualenv context
+    if test -z "$VIRTUAL_ENV" ; then
+        PYTHON_VIRTUALENV=""
+    else
+        PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`]"
+    fi
+
+    PS_PRE='\[\e[1m\e['
+    PS_POS='m\]'
+    PS_ENDCOLOR='\[\e[m\]'
+
+    PS_NEWLINE='\n'
+    PS_USER='\u'
+    PS_HOST='\h'
+    PS_DATETIME='[\D{%d.%m.%y} - \t]'
+    PS_CURRDIR='\w'
+    PS_GIT='$(__git_ps1 "(%s)")'
+
+    PS1=${PYTHON_VIRTUALENV}
+    PS1+=${PS_NEWLINE}
+    PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+
+    #PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+    #PS1+=${PS_PRE}'38;5;32'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
+    #PS1+=${PS_PRE}'38;5;160'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+
+    if git --version &>/dev/null;
+    then
+       PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
+    else
+       PS1+=''
+    fi
+    PS1+=${PS_NEWLINE}
+    if [ $EXIT != 0 ]; then
+        # 128+n: Fatal error signal "n"
+        declare -A ERRCODES=( [1]=" general error" [2]=" misuse of shell buildins" [126]=" command invoked cannot execute" [127]=" command not found" [128]=" invalid argument to exit" [130]=" script terminated by control-c" [255]=" exit status out of range" )
+        PS1+=${PS_PRE}'38;5;161'${PS_POS}${EXIT}${PS_ENDCOLOR}
+        PS1+=${PS_PRE}'38;5;16'${PS_POS}${ERRCODES[${EXIT}]}${PS_ENDCOLOR}
+    else
+        PS1+=${PS_PRE}'38;5;30'${PS_POS}${EXIT}${PS_ENDCOLOR}
+    fi
+    PS1+=${PS_PRE}'38;5;16'${PS_POS}' >> '${PS_ENDCOLOR}
+}
+
+# set your terminal background to #dddddd and foreground to #222222
+# for terminator in ~/.config/terminator/config
+# for xterm in ~/.Xresources
+
+# for night mode do
+# xterm -rv
+# xrdb ~/.Xresources
+
+

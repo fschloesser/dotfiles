@@ -1,7 +1,7 @@
 #! /bin/bash
 
 if [ -f /etc/bash.bashrc ]; then
-        . /etc/bash.bashrc
+  . /etc/bash.bashrc
 fi
 
 ##########################
@@ -12,6 +12,9 @@ fi
 # However this could take a while. To make it an hourly cronjob with this:
 # * 1 * * * ctags -R -o ~/.TAGS ~/git ~/projects
 # To set it up, you could use 'crontab -l', 'crontab -e', and 'crontab -r'
+
+# set a terminal of your choice (i.e. terminator, xterm ...)
+# sudo update-alternatives --config x-terminal-emulator
 
 ##########################
 ##### history and terminal
@@ -41,97 +44,47 @@ export INPUTRC=~/.inputrc
 ###########################
 shopt -s expand_aliases
 
-alias setbrightness="xrandr --output eDP-1 --brightness "
-alias setlowresolution="xrandr --output eDP-1 --mode 1360x768"
-alias sethighresolution="xrandr --output eDP-1 --mode 1920x1080"
-alias ls='ls --color=auto'
-alias la='ls -a --color=auto'
-alias ll='ls -la --color=auto'
-alias l='ls --color=auto'
-alias back='cd -'
-alias ..='cd ..'
-alias .2='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-alias grep='grep -I --color -n'
-alias rgrep='rgrep -I --color -n'
-alias igrep='grep -i -I --color -n'
-alias rigrep='rgrep -i -I --color -n'
-alias egrep='egrep --color -I -n'
-alias fgrep='fgrep --color -I -n'
-alias sourcebashrc='source ~/.bashrc'
-
-alias activateprojector='xrandr --output HDMI-2 --auto --right-of eDP-1'
-alias deactivateprojector='xrandr --output HDMI-2 --off'
-
 source ~/.bash_aliases
+source ~/.bash_commands
 
 ###########################
 ##### configure prompt
 ###########################
 
-# load git prompt
-source ~/.git_prompt.sh
-# load git completion
-source ~/.git_completion.sh
+# load git prompt and colors
+source ~/.bash_colors
 
-# set bef = '<'\!'>'
-export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
-
-PROMPT_COMMAND=__prompt_command
-
-__prompt_command() {
-    # get exitcode
-    local EXIT="$?"
-
-    # get python virtualenv context
-    if test -z "$VIRTUAL_ENV" ; then
-        PYTHON_VIRTUALENV=""
-    else
-        PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`]"
-    fi
-
-    PS_PRE='\[\e[1m\e['
-    PS_POS='m\]'
-    PS_ENDCOLOR='\[\e[m\]'
-
-    PS_NEWLINE='\n'
-    PS_USER='\u'
-    PS_HOST='\h'
-    PS_DATETIME='[\D{%d.%m.%y} - \t]'
-    PS_CURRDIR='\w'
-    PS_GIT='$(__git_ps1 "(%s)")'
-
-    PS1=${PYTHON_VIRTUALENV}
-    PS1+=${PS_NEWLINE}
-    PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
-    PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-    PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
-
-    #PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
-    #PS1+=${PS_PRE}'38;5;32'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-    #PS1+=${PS_PRE}'38;5;160'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
-
-    if git --version &>/dev/null;
-    then
-       PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
-    else
-       PS1+=''
-    fi
-    PS1+=${PS_NEWLINE}
-    if [ $EXIT != 0 ]; then
-        # 128+n: Fatal error signal "n"
-        declare -A ERRCODES=( [1]=" general error" [2]=" misuse of shell buildins" [126]=" command invoked cannot execute" [127]=" command not found" [128]=" invalid argument to exit" [130]=" script terminated by control-c" [255]=" exit status out of range" )
-        PS1+=${PS_PRE}'38;5;161'${PS_POS}${EXIT}${PS_ENDCOLOR}
-        PS1+=${PS_PRE}'38;5;16'${PS_POS}${ERRCODES[${EXIT}]}${PS_ENDCOLOR}
-    else
-        PS1+=${PS_PRE}'38;5;30'${PS_POS}${EXIT}${PS_ENDCOLOR}
-    fi
-    PS1+=${PS_PRE}'38;5;16'${PS_POS}' >> '${PS_ENDCOLOR}
-}
-
-# set your terminal background to #dddddd and foreground to #222222
+export CLICOLOR=TRUE
+# colors of ls and so on
+# 1. directory
+# 2. symbolic link
+# 3. socket
+# 4. pipe
+# 5. executable
+# 6. block special
+# 7. character special
+# 8. executable with setuid bit set
+# 9. executable with setgid bit set
+# 10. directory writable to others, with sticky bit
+# 11. directory writable to others, without sticky bit
+# a black
+# b red
+# c green
+# d brown
+# e blue
+# f magenta
+# g cyan
+# h light grey
+# A bold black, usually shows up as dark grey
+# B bold red
+# C bold green
+# D bold brown, usually shows up as yellow
+# E bold blue
+# F bold magenta
+# G bold cyan
+# H bold light grey; looks like bright white
+# x default foreground or background
+export LSCOLORS=Gxfxbxdxcxegedabagacad
 
 ###########################
 #####
