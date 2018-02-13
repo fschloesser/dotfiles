@@ -85,7 +85,19 @@ syntax enable
 " colorscheme: https://github.com/reedes/vim-colors-pencil/blob/master/colors/pencil.vim
 colorscheme pencil
 " colorscheme peachpuff
-set background=light
+
+if has('termguicolors')
+    set termguicolors
+endif
+" change the colorscheme on nightfall to dark, on sunrise to light
+let hour = (strftime('%H'))
+if hour >= 17
+    set background=dark
+elseif hour >= 10
+    set background=light
+elseif hour >= 0
+    set background=dark
+endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
