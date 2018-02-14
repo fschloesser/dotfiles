@@ -17,11 +17,9 @@ Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 ! colors
-XTerm*foreground: black
+XTerm*foreground: rgb:1/1/1
 XTerm*background: white
-XTerm*cursorColor: blue
-XTerm*pointerColor: blue
-XTerm*pointerShape: arrow
+XTerm*cursorColor: green
 XTerm*color0: rgb:28/28/28
 XTerm*color1: rgb:28/28/28
 XTerm*color15: rgb:e4/e4/e4
