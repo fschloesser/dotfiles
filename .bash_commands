@@ -5,9 +5,6 @@ shopt -s expand_aliases
 alias vim="vim --servername vim"
 
 # TODO improve this
-alias setbrightness="xrandr --output eDP-1 --brightness "
-alias setinvert="xrandr --output eDP-1 --gamma -1:-1:-1 --brightness 0.3"
-alias setrevert="xrandr --output eDP-1 --gamma 1:1:1 --brightness 0.5"
 
 alias setlowresolution="xrandr --output eDP-1 --mode 1360x768"
 alias sethighresolution="xrandr --output eDP-1 --mode 1920x1080"
@@ -32,4 +29,29 @@ alias rigrep='rgrep -i -I --color -n'
 alias egrep='egrep --color -I -n'
 alias fgrep='fgrep --color -I -n'
 alias sourcebashrc='source ~/.bashrc'
+
+# TODO improve this
+function setbrightness(){
+    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+    for i in ${OUT};
+    do
+        xrandr --output "${i}" --brightness "$1"
+    done
+}
+
+function setinvert(){
+    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+    for i in ${OUT};
+    do
+        xrandr --output "${i}" --gamma -1:-1:-1 --brightness 0.3
+    done
+}
+
+function setrevert(){
+    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+    for i in ${OUT};
+    do
+        xrandr --output "${i}" --gamma 1:1:1 --brightness 0.5
+    done
+}
 
