@@ -22,4 +22,4 @@
 # m h  dom mon dow   command
 # * * * * * ctags -R -o ~/.TAGS ~/git ~/projects
 */5 * * * * ~/.regular/adjustbrightness.sh
-*/5 * * * * ~/.regular/changevimcolors.sh
+0 * * * * ~/.regular/changevimcolors.sh
