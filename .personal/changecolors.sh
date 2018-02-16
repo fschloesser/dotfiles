@@ -13,9 +13,11 @@ changecolor() {
 }
 
 if [ 8 -le "${HOUR}" -a "${HOUR}" -lt 17 ]; then
+    echo "day"
     changecolor light
     cp ~/.config/terminator/config_day ~/.config/terminator/config
 else
+    echo "night"
     changecolor dark
     cp ~/.config/terminator/config_night ~/.config/terminator/config
 fi

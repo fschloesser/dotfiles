@@ -183,3 +183,8 @@ workspace 11 output HDMI-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xhost +local:
 exec --no-startup-id icedove
+
+# exec --no-startup-id xsetroot -solid "#333333"
+
+# you can edit this with 'bitmap' from the x11-apps package
+xsetroot -bitmap ~/.personal/background.bmp -fg "#aa99aa" -bg "#996699"

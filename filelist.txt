@@ -12,9 +12,10 @@
 .git_completion.sh
 .git_prompt.sh
 .profile
-.regular/adjustbrightness.sh
-.regular/daylight_time.txt
-.regular/changecolors.sh
+.personal/adjustbrightness.sh
+.personal/background.bmp
+.personal/changecolors.sh
+.personal/daylight_time.txt
 .vim/vimrc
 .xinitrc
 .Xmodmap
