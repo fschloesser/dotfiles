@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#time=$(date +%H%M)
+time=$(date +%H%M)
 DAY=$(date +%m-%d)
 LINE=($(grep ^${DAY} ~/.personal/daylight_time.txt))
 LIGHT=(xx 0.2 0.47 0.73 1 1 0.73 0.47 0.2)
@@ -32,43 +32,35 @@ source ~/.personal/colors.sh
 color_fg=${rgb_lightpurple}
 color_bg=${rgb_darkpurple}
 
-if (( 10#${time} < 10#${LINE[1]} ||  10#${LINE[8]} < 10#${time} )); then
-    echo null
+if (( 10#${time} < 10#${LINE[1]} || 10#${LINE[8]} < 10#${time} )); then
     intensity=0.2
     color_fg=${rgb_darkmidnight}
     color_bg=${rgb_lightmidnight}
 elif (( 10#${time} < 10#${LINE[2]} )); then
-    echo eins
     intensity=$(interpolate 1)
     color_fg=${rgb_pink}
     color_bg=${rgb_rose}
 elif (( 10#${time} < 10#${LINE[3]} )); then
-    echo zwei
     intensity=$(interpolate 2)
     color_fg=${rgb_papaya_whip}
     color_bg=${rgb_moccasin}
 elif (( 10#${time} < 10#${LINE[4]} )); then
-    echo drei
     intensity=$(interpolate 3)
     color_fg=${rgb_alice_blue}
     color_bg=${rgb_lavender}
 elif (( 10#${time} < 10#${LINE[5]} )); then
-    echo vier
     intensity=1
     color_fg=${rgb_lightpurple}
     color_bg=${rgb_darkpurple}
 elif (( 10#${time} < 10#${LINE[6]} )); then
-    echo fuenf
     intensity=$(interpolate 5)
     color_fg=${rgb_alice_blue}
     color_bg=${rgb_lavender}
 elif (( 10#${time} < 10#${LINE[7]} )); then
-    echo sechs
     intensity=$(interpolate 6)
     color_fg=${rgb_papaya_whip}
     color_bg=${rgb_moccasin}
 elif (( 10#${time} < 10#${LINE[8]} )); then
-    echo 7
     intensity=$(interpolate 7)
     color_fg=${rgb_pink}
     color_bg=${rgb_rose}
@@ -85,11 +77,9 @@ changecolor() {
 }
 
 if (( 10#${LINE[4]} < 10#${time} && 10#${time} < 10#${LINE[5]} )); then
-    echo "day"
     changecolor light
     cp ~/.config/terminator/config_day ~/.config/terminator/config
 else
-    echo "night"
     changecolor dark
     cp ~/.config/terminator/config_night ~/.config/terminator/config
 fi
