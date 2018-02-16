@@ -14,7 +14,6 @@
 .profile
 .personal/adjustbrightness.sh
 .personal/background.bmp
-.personal/changecolors.sh
 .personal/colors.sh
 .personal/daylight_time.txt
 .vim/vimrc

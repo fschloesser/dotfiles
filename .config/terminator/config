@@ -11,7 +11,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#222222"
+    background_color = "#cccccc"
     cursor_color = "#cc55aa"
-    foreground_color = "#cccccc"
+    foreground_color = "#222222"
     scrollback_lines = 5000
