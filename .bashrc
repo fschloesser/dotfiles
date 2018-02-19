@@ -100,3 +100,4 @@ bind '"\e[6;5~":menu-complete'                  # Ctrl-PageUp
 # set nobeep
 # set complete = enhance
 
+echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
