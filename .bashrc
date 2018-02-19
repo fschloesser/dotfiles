@@ -56,35 +56,7 @@ source ~/.bash_colors
 
 export CLICOLOR=TRUE
 # colors of ls and so on
-# 1. directory
-# 2. symbolic link
-# 3. socket
-# 4. pipe
-# 5. executable
-# 6. block special
-# 7. character special
-# 8. executable with setuid bit set
-# 9. executable with setgid bit set
-# 10. directory writable to others, with sticky bit
-# 11. directory writable to others, without sticky bit
-# a black
-# b red
-# c green
-# d brown
-# e blue
-# f magenta
-# g cyan
-# h light grey
-# A bold black, usually shows up as dark grey
-# B bold red
-# C bold green
-# D bold brown, usually shows up as yellow
-# E bold blue
-# F bold magenta
-# G bold cyan
-# H bold light grey; looks like bright white
-# x default foreground or background
-export LSCOLORS=Gxfxbxdxcxegedabagacad
+export LS_COLORS="di=1;34:ln=31:so=36:pi=33:ex=32:bd=1;33;40:cd=1;36;40:su=1;31;40:sg=1;32;40:tw=1;35;40:ow=1;37;40"
 
 ###########################
 #####
