@@ -100,4 +100,9 @@ bind '"\e[6;5~":menu-complete'                  # Ctrl-PageUp
 # set nobeep
 # set complete = enhance
 
+## bring back US english
+export LANG=en_US.UTF-8
+export LANGUAGE=en
+
 echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+

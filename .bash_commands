@@ -32,7 +32,6 @@ alias egrep='egrep --color -I -n'
 alias fgrep='fgrep --color -I -n'
 alias sourcebashrc='source ~/.bashrc'
 
-# TODO improve this
 function setbrightness(){
     OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
     for i in ${OUT};
@@ -57,3 +56,8 @@ function setrevert(){
     done
 }
 
+function searchnotebook() {
+    NBDIR=$(ls -d ~/mygit/notebook)
+    grep -r "$1" ${NBDIR} | sed  "s#${NBDIR}/##"
+
+}
