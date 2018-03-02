@@ -23,6 +23,12 @@ set bell-style none
 set completion-display-width 5
 set completion-ignore-case on
 
+# see https://www.gnu.org/software/bash/manual/html_node/Bindable-Readline-Commands.html
 # history search with PgUP und PgDOWN
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+"\e[5;5~": menu-complete-backward'         # Ctrl-PageDown
+"\e[6;5~": menu-complete'                  # Ctrl-PageUp
+

@@ -58,23 +58,8 @@ export CLICOLOR=TRUE
 # colors of ls and so on
 export LS_COLORS="di=1;34:ln=31:so=36:pi=33:ex=32:bd=1;33;40:cd=1;36;40:su=1;31;40:sg=1;32;40:tw=1;35;40:ow=1;37;40"
 
-###########################
-#####
-###########################
-bind '"\e[1;5D": backward-word' # ~ for xterm
-bind '"\e[1;5C": forward-word'
-bind '"\e[5;5~":menu-complete-backward'         # Ctrl-PageDown
-bind '"\e[6;5~":menu-complete'                  # Ctrl-PageUp
-#
-#
-# set filec
-# set autolist
-# set nobeep
-# set complete = enhance
-
 ## bring back US english
 export LANG=en_US.UTF-8
 export LANGUAGE=en
 
 echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
-
