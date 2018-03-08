@@ -1,34 +1,38 @@
-# /etc/inputrc - global inputrc for libreadline
-# See readline(3readline) and `info rluserman' for more information.
+## /etc/inputrc - global inputrc for libreadline
+## See readline(3readline) and `info rluserman' for more information.
 
-# Be 8 bit clean.
+## Be 8 bit clean.
 set input-meta on
 set output-meta on
 
-# To allow the use of 8bit-characters like the german umlauts, uncomment
-# the line below. However this makes the meta key not work as a meta key,
-# which is annoying to those which don't need to type in 8-bit characters.
+## To allow the use of 8bit-characters like the german umlauts, uncomment
+## the line below. However this makes the meta key not work as a meta key,
+## which is annoying to those which don't need to type in 8-bit characters.
 
-# set convert-meta off
+## set convert-meta off
 
-# try to enable the application keypad when it is called.  Some systems
-# need this to enable the arrow keys.
-# set enable-keypad on
+## try to enable the application keypad when it is called.  Some systems
+## need this to enable the arrow keys.
+## set enable-keypad on
 
-# see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
+## see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
 
-# do not bell on tab-completion
+## do not bell on tab-completion
 set bell-style none
 
 set completion-display-width 5
 set completion-ignore-case on
 
-# see https://www.gnu.org/software/bash/manual/html_node/Bindable-Readline-Commands.html
-# history search with PgUP und PgDOWN
+## see https://www.gnu.org/software/bash/manual/html_node/Bindable-Readline-Commands.html
+## history search with PgUP und PgDOWN
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
+
+# "\e[A": ## arrow up
+# "\e[B": ## arrow down
+
 "\e[1;5D": backward-word
 "\e[1;5C": forward-word
-"\e[5;5~": menu-complete-backward'         # Ctrl-PageDown
-"\e[6;5~": menu-complete'                  # Ctrl-PageUp
+"\e[5;5~": menu-complete-backward'        ## Ctrl-PageDown
+"\e[6;5~": menu-complete'                 ## Ctrl-PageUp
 

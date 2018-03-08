@@ -3,7 +3,9 @@
 time=$(date +%H%M)
 DAY=$(date +%m-%d)
 LINE=($(grep ^${DAY} ~/.personal/daylight_time.txt))
-LIGHT=(xx 0.2 0.4 0.6 1.0 1.0 0.6 0.4 0.2)
+#LIGHT=(xx 0.2 0.4 0.6 1.0 1.0 0.6 0.4 0.2)
+LIGHT=(xx 0.5 0.6 0.8 1.0 1.0 0.8 0.6 0.5)
+NIGHT_INTENSITY=0.5
 
 # w should display the displays, weirdly enough this does not work
 # export DISPLAY=$(w "$(id -un)" | awk 'NF > 7 && $2 ~ /tty[0-9]+/ {print $3; exit}' 2>/dev/null)
@@ -34,7 +36,7 @@ color_bg=${rgb_darkpurple}
 
 if (( 10#${time} < 10#${LINE[1]} || 10#${LINE[8]} < 10#${time} )); then
     echo "one"
-    intensity=0.2
+    intensity=$NIGHT_INTENSITY
     color_fg=${rgb_darkmidnight}
     color_bg=${rgb_lightmidnight}
 elif (( 10#${time} < 10#${LINE[2]} )); then

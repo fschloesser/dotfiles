@@ -189,4 +189,4 @@ exec --no-startup-id icedove
 # exec --no-startup-id xsetroot -solid "#333333"
 
 # you can edit this with 'bitmap' from the x11-apps package
-xsetroot -bitmap ~/.personal/background.bmp -fg "#aa99aa" -bg "#996699"
+exec xsetroot -bitmap ~/.personal/background.bmp -fg "#aa99aa" -bg "#996699"
