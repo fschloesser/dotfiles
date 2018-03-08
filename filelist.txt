@@ -15,6 +15,7 @@
 .personal/adjustbrightness.sh
 .personal/backgrounds/simpletriangles.bmp
 .personal/backgrounds/sophisticated.bmp
+.personal/backgrounds/floral.bmp
 .personal/colors.sh
 .personal/daylight_time.txt
 .vim/vimrc
