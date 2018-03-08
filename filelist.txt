@@ -13,7 +13,8 @@
 .git_prompt.sh
 .profile
 .personal/adjustbrightness.sh
-.personal/background.bmp
+.personal/backgrounds/simpletriangles.bmp
+.personal/backgrounds/sophisticated.bmp
 .personal/colors.sh
 .personal/daylight_time.txt
 .vim/vimrc
