@@ -24,7 +24,11 @@ alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-alias grep='grep -I --color -n'
+
+alias ungrep='grep -v --color -n'
+
+alias grep='grep --color -n'
+alias ngrep='grep -n --color -n'
 alias rgrep='rgrep -I --color -n'
 alias igrep='grep -i -I --color -n'
 alias rigrep='rgrep -i -I --color -n'
