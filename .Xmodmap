@@ -1,8 +1,17 @@
 ! Map umlauts to RIGHT ALT + <key>
+! Find out keycodes via 'xev'
 keycode 108 = Mode_switch
-keysym e = e E EuroSign
-keysym c = c C cent
+
 keysym a = a A adiaeresis Adiaeresis
 keysym o = o O odiaeresis Odiaeresis
 keysym u = u U udiaeresis Udiaeresis
 keysym s = s S ssharp
+
+
+keysym q = q Q aacute Aacute
+keysym w = w W eacute Eacute
+keysym e = e E iacute Iacute
+keysym r = r R oacute Oacute
+keysym t = t T uacute Uacute
+
+keysym n = n N ntilde

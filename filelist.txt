@@ -7,6 +7,7 @@
 .config/terminator/config
 .config/terminator/config_day
 .config/terminator/config_night
+.dictrc
 .inputrc
 .gitconfig
 .git_completion.sh
