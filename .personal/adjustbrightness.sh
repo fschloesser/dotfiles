@@ -54,7 +54,7 @@ fi
 source ~/.bash_commands
 
 # colors for background
-colorsfile='colors/colorstable.txt'
+colorsfile=~/.personal/colors/colorstable.txt
 epoch=$(date +%s)
 nlines=$(cat ${colorsfile} |wc -l )
 rand1=$(bc <<< "${epoch}%${nlines}")
