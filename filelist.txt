@@ -14,12 +14,15 @@
 .git_prompt.sh
 .profile
 .personal/adjustbrightness.sh
+.personal/adjustterminal.sh
 .personal/backgrounds/simpletriangles.bmp
 .personal/backgrounds/sophisticated.bmp
 .personal/backgrounds/wallpaperbig.bmp
 .personal/backgrounds/wallpapersmall.bmp
 .personal/backgrounds/floral.bmp
-.personal/colors.sh
+.personal/backgrounds/heart.bmp
+.personal/colors/gencolors.sh
+.personal/colors/colorstable.txt
 .personal/daylight_time.txt
 .vim/vimrc
 .xinitrc

@@ -3,9 +3,13 @@
 time=$(date +%H%M)
 DAY=$(date +%m-%d)
 LINE=($(grep ^${DAY} ~/.personal/daylight_time.txt))
-#LIGHT=(xx 0.2 0.4 0.6 1.0 1.0 0.6 0.4 0.2)
-LIGHT=(xx 0.5 0.6 0.8 1.0 1.0 0.8 0.6 0.5)
-NIGHT_INTENSITY=0.5
+LIGHT=(xx xx xx 0.2 1.0 1.0 0.2 xx xx)
+
+# adjust margin
+LINE[3]=${LINE[4]}
+LINE[6]=${LINE[5]}
+LINE[4]=$(bc <<< "${LINE[3]}+300")
+LINE[5]=$(bc <<< "${LINE[6]}-300")
 
 # w should display the displays, weirdly enough this does not work
 # export DISPLAY=$(w "$(id -un)" | awk 'NF > 7 && $2 ~ /tty[0-9]+/ {print $3; exit}' 2>/dev/null)
@@ -15,11 +19,12 @@ function interpolate() {
     first=$1
     second=$(($first + 1))
 
+    # the line 'scale=2' is extremely important to enable division
     interp=$(bc <<< "
     l_one = ${LINE[${first}]}; l_two = ${LINE[${second}]};
     v_one = ${LIGHT[${first}]}; v_two = ${LIGHT[${second}]};
     time=${time};
-    scale = 2;
+    scale=2;
 
     reltimdif = l_two - l_one;
     valdif = v_two - v_one;
@@ -28,76 +33,37 @@ function interpolate() {
     echo ${interp}
 }
 
-source ~/.bash_commands
-source ~/.personal/colors.sh
+# default bg_colors
+color_fg='#aa99aa' #${rgb_lightpurple}
+color_bg='#996699' #${rgb_darkpurple}
 
-color_fg=${rgb_lightpurple}
-color_bg=${rgb_darkpurple}
-
-if (( 10#${time} < 10#${LINE[1]} || 10#${LINE[8]} < 10#${time} )); then
-    echo "one"
-    intensity=$NIGHT_INTENSITY
-    color_fg=${rgb_darkmidnight}
-    color_bg=${rgb_lightmidnight}
-elif (( 10#${time} < 10#${LINE[2]} )); then
-    echo "two"
-    intensity=$(interpolate 1)
-    color_fg=${rgb_pink}
-    color_bg=${rgb_rose}
-elif (( 10#${time} < 10#${LINE[3]} )); then
-    echo "three"
-    intensity=$(interpolate 2)
-    color_fg=${rgb_papaya_whip}
-    color_bg=${rgb_moccasin}
+if (( 10#${time} < 10#${LINE[3]} || 10#${LINE[6]} < 10#${time} )); then
+    echo "night"
+    intensity=${LIGHT[3]}
 elif (( 10#${time} < 10#${LINE[4]} )); then
-    echo "vier"
+    echo "early"
     intensity=$(interpolate 3)
-    color_fg=${rgb_alice_blue}
-    color_bg=${rgb_lavender}
 elif (( 10#${time} < 10#${LINE[5]} )); then
-    echo "fuenf"
+    echo "day"
     intensity=1
-    color_fg=${rgb_lightpurple}
-    color_bg=${rgb_darkpurple}
 elif (( 10#${time} < 10#${LINE[6]} )); then
-    echo "sechs"
+    echo "late"
     intensity=$(interpolate 5)
-    color_fg=${rgb_alice_blue}
-    color_bg=${rgb_lavender}
-elif (( 10#${time} < 10#${LINE[7]} )); then
-    echo "sieben"
-    intensity=$(interpolate 6)
-    color_fg=${rgb_papaya_whip}
-    color_bg=${rgb_moccasin}
-elif (( 10#${time} < 10#${LINE[8]} )); then
-    echo "acht"
-    intensity=$(interpolate 7)
-    color_fg=${rgb_pink}
-    color_bg=${rgb_rose}
 fi
+
+source ~/.bash_commands
+
+# colors for background
+colorsfile='colors/colorstable.txt'
+epoch=$(date +%s)
+nlines=$(cat ${colorsfile} |wc -l )
+rand1=$(bc <<< "${epoch}%${nlines}")
+rand2=$(bc <<< "(${epoch}/10)%${nlines}")
+color_bg=$(line ${colorsfile} ${rand1})
+color_fg=$(line ${colorsfile} ${rand2})
 
 echo $intensity
 setbrightness ${intensity}
 
-changecolor() {
-    # change vim color
-    VIMS=$(vim --serverlist)
-    for i in $VIMS; do
-        vim --remote-send "<ESC>:set background=$1<CR>" --servername $i
-    done
-}
-
-if (( 10#${LINE[4]} < 10#${time} && 10#${time} < 10#${LINE[5]} )); then
-    changecolor light
-    cp ~/.config/terminator/config_day ~/.config/terminator/config
-else
-    changecolor dark
-    cp ~/.config/terminator/config_night ~/.config/terminator/config
-fi
-
-# darkblue    xsetroot -bitmap background.bmp -fg ${rgb_darkmidnight} -bg ${rgb_lightmidnight}
-# purple      xsetroot -bitmap background.bmp -fg ${rgb_lightpurple} -bg ${rgb_darkpurple}
-# white       xsetroot -bitmap background.bmp -fg ${rgb_alice_blue} -bg ${rgb_lavender}
-# yellow      xsetroot -bitmap background.bmp -fg ${rgb_papaya_whip} -bg ${rgb_moccasin}
-# red         xsetroot -bitmap background.bmp -fg ${rgb_pink} -bg ${rgb_rose}
+# purple      xsetroot -bitmap background.bmp -fg #aa99aa -bg #996699
 xsetroot -bitmap ~/.personal/background.bmp -fg "${color_fg}" -bg "${color_bg}"

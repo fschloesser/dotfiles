@@ -9,7 +9,10 @@ setxkbmap us
 # make capslock yet another ctrl
 setxkbmap -option ctrl:nocaps
 # use xmodmap to configure easy German umlauts and sharp s
-xmodmap ~/.Xmodmap
+
+if [ -s ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
+fi
 
 exec i3
 

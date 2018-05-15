@@ -86,7 +86,7 @@ if has('termguicolors')
 endif
 " change the colorscheme on nightfall to dark, on sunrise to light
 let hour = (strftime('%H'))
-if hour >= 17
+if hour >= 18
     set background=dark
 elseif hour >= 10
     set background=light
@@ -264,6 +264,6 @@ endif
 
 " conf for special files
 autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
-autocmd FileType htmldjango,xml,xhtml,html,htm,yaml,yml,sls,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 

@@ -36,32 +36,36 @@ alias egrep='egrep --color -I -n'
 alias fgrep='fgrep --color -I -n'
 alias sourcebashrc='source ~/.bashrc'
 
+function line() {
+  cat $1 |head -n $2|tail -n 1
+}
+
 function setbrightness(){
-    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
-    for i in ${OUT};
-    do
-        xrandr --output "${i}" --brightness "$1"
-    done
+  OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+  for i in ${OUT};
+  do
+    xrandr --output "${i}" --brightness "$1"
+  done
 }
 
 function setinvert(){
-    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
-    for i in ${OUT};
-    do
-        xrandr --output "${i}" --gamma -1:-1:-1 --brightness 0.3
-    done
+  OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+  for i in ${OUT};
+  do
+    xrandr --output "${i}" --gamma -1:-1:-1 --brightness 0.3
+  done
 }
 
 function setrevert(){
-    OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
-    for i in ${OUT};
-    do
-        xrandr --output "${i}" --gamma 1:1:1 --brightness 0.5
-    done
+  OUT="$(xrandr --listactivemonitors | awk 'NR!=1{print " "$NF" "}')"
+  for i in ${OUT};
+  do
+    xrandr --output "${i}" --gamma 1:1:1 --brightness 0.5
+  done
 }
 
 function searchnotebook() {
-    NBDIR=$(ls -d ~/mygit/notebook)
-    grep -r "$1" ${NBDIR} | sed  "s#${NBDIR}/##"
+  NBDIR=$(ls -d ~/mygit/notebook)
+  grep -r "$1" ${NBDIR} | sed  "s#${NBDIR}/##"
 
 }
