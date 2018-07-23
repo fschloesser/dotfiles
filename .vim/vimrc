@@ -178,10 +178,10 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-" set softtabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
+" set softtabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -258,12 +258,16 @@ if has("autocmd")
     autocmd BufWritePre * :call CleanExtraSpaces()
 endif
 
+:hi CursorLine   cterm=NONE ctermbg=grey ctermfg=white guibg=gray guifg=white
+:hi CursorColumn cterm=NONE ctermbg=grey ctermfg=white guibg=gray guifg=white
+:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
 """"""""""""""""""""""""""""""""""""""
 " the end is special
 """"""""""""""""""""""""""""""""""""""
 
 " conf for special files
 autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
-autocmd FileType htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
-autocmd FileType c,h  set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
+autocmd FileType md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType c,h set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 
