@@ -57,8 +57,8 @@ source ~/.bash_commands
 colorsfile=~/.personal/colors/colorstable.txt
 epoch=$(date +%s)
 nlines=$(cat ${colorsfile} |wc -l )
-rand1=$(bc <<< "${epoch}%${nlines}")
-rand2=$(bc <<< "(${epoch}/10)%${nlines}")
+rand1=$(bc <<< "(${epoch}/60)%${nlines}")
+rand2=$(bc <<< "(${rand1}+(${nlines}/2))%${nlines}")
 color_bg=$(line ${colorsfile} ${rand1})
 color_fg=$(line ${colorsfile} ${rand2})
 

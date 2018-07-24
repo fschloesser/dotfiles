@@ -6,11 +6,13 @@ alias vim="vim --servername vim"
 
 # TODO improve this
 
-alias setlowresolution="xrandr --output eDP-1 --mode 1360x768"
-alias sethighresolution="xrandr --output eDP-1 --mode 1920x1080"
+alias resolution_low="xrandr --output eDP-1 --mode 1360x768"
+alias resolution_high="xrandr --output eDP-1 --mode 1920x1080"
 
-alias activateprojector='xrandr --output HDMI-2 --auto --right-of eDP-1'
-alias deactivateprojector='xrandr --output HDMI-2 --off'
+alias projector_activate='xrandr --output HDMI-2 --auto --left-of eDP-1'
+alias projector_deactivate='xrandr --output HDMI-2 --off'
+alias screen_activate='xrandr --output DP-2-1 --auto --left-of eDP-1'
+alias screen_deactivate='xrandr --output DP-2-1 --off'
 
 alias darklock="i3lock -f -c '222222'"
 
