@@ -35,7 +35,7 @@ export HISTFILESIZE=5000
 ##### Path
 ###########################
 export GOPATH="$HOME/go"
-export PATH="./:/optimi/usr/bin:${PATH}:${HOME}/.local/bin:/bin:/usr/ucb:/usr/bin/X11:/usr/local/ssh/bin:/client/bin:$GOROOT/bin:$GOPATH/bin"
+export PATH="./:${PATH}:${HOME}/.local/bin:/bin:/usr/ucb:/usr/bin/X11:/usr/local/ssh/bin:/client/bin:$GOROOT/bin:$GOPATH/bin"
 
 export INPUTRC=~/.inputrc
 
