@@ -63,7 +63,10 @@ export LS_COLORS="di=1;34:ln=31:so=36:pi=33:ex=32:bd=1;33;40:cd=1;36;40:su=1;31;
 
 ## bring back US english
 export LANG=en_US.UTF-8
-export LANGUAGE=en
+# use english by default, fall back to german and then to spanish
+export LANGUAGE=en:de:es
+# don't set this explicitly for a user - to be used in scripts
+# export LC_ALL=C
 
 # somehow the following line breaks scp... TODO
 #echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
