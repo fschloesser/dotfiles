@@ -2,6 +2,7 @@
 .bash_logout
 .bash_profile
 .bash_colors
+.bash_errcodes
 .bash_commands
 .config/i3/config
 .config/terminator/config

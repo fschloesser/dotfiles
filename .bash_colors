@@ -4,9 +4,45 @@
 source ~/.git_prompt.sh
 # load git completion
 source ~/.git_completion.sh
+# load error codes
+source ~/.bash_errcodes
 
 # set bef = '<'\!'>'
 export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.]*\).*|(\2)|'"
+
+###################### colors
+
+# for dark backgrounds
+#PS_COLOR_DATETIME='38;5;66'
+#PS_COLOR_USER='38;5;169'
+#PS_COLOR_HOST='38;5;169'
+#PS_COLOR_CURRDIR='38;5;12'
+#PS_COLOR_GIT='38;5;172'
+
+# for light backgrounds
+#PS_COLOR_DATETIME='38;5;245'
+#PS_COLOR_USER='38;5;23'
+#PS_COLOR_HOST='38;5;23'
+#PS_COLOR_CURRDIR='38;5;32'
+#PS_COLOR_GIT='38;5;208'
+
+# for light backgrounds
+#PS_COLOR_DATETIME='38;5;30'
+#PS_COLOR_USER='38;5;161'
+#PS_COLOR_HOST='38;5;172'
+#PS_COLOR_CURRDIR='38;5;32'
+#PS_COLOR_GIT='38;5;105'
+
+# personal preferences
+PS_COLOR_DATETIME='38;5;245'
+PS_COLOR_USER='38;5;126'
+PS_COLOR_HOST='38;5;106'
+PS_COLOR_CURRDIR='38;5;12'
+PS_COLOR_GIT='38;5;136'
+
+PS_COLOR_DARK='38;5;245'
+PS_COLOR_RED='38;5;160'
+PS_COLOR_GREEN='38;5;28'
 
 PROMPT_COMMAND=__prompt_command
 
@@ -34,30 +70,27 @@ __prompt_command() {
 
     PS1=${PYTHON_VIRTUALENV}
     PS1+=${PS_NEWLINE}
-    PS1+=${PS_PRE}'38;5;246'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
-    PS1+=${PS_PRE}'38;5;161'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-    PS1+=${PS_PRE}'38;5;30'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
-
-    #PS1+=${PS_PRE}'38;5;16'${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
-    #PS1+=${PS_PRE}'38;5;32'${PS_POS}${PS_USER}'@'${PS_HOST}': '${PS_ENDCOLOR}
-    #PS1+=${PS_PRE}'38;5;160'${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_DATETIME}${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_USER}${PS_POS}${PS_USER}${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_DARK}${PS_POS}'@'${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_HOST}${PS_POS}${PS_HOST}${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_DARK}${PS_POS}': '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_CURRDIR}${PS_POS}${PS_CURRDIR}' '${PS_ENDCOLOR}
 
     if git --version &>/dev/null;
     then
-       PS1+=${PS_PRE}'38;5;105'${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
+       PS1+=${PS_PRE}${PS_COLOR_GIT}${PS_POS}${PS_GIT}' '${PS_ENDCOLOR}
     else
        PS1+=''
     fi
     PS1+=${PS_NEWLINE}
     if [ $EXIT != 0 ]; then
-        # 128+n: Fatal error signal "n"
-        declare -A ERRCODES=( [1]=" general error" [2]=" misuse of shell buildins" [126]=" command invoked cannot execute" [127]=" command not found" [128]=" invalid argument to exit" [130]=" script terminated by control-c" [255]=" exit status out of range" )
-        PS1+=${PS_PRE}'38;5;161'${PS_POS}${EXIT}${PS_ENDCOLOR}
-        PS1+=${PS_PRE}'38;5;16'${PS_POS}${ERRCODES[${EXIT}]}${PS_ENDCOLOR}
+        PS1+=${PS_PRE}${PS_COLOR_RED}${PS_POS}${ERRCODES[${EXIT}]}${PS_ENDCOLOR}${PS_NEWLINE}
+        PS1+=${PS_PRE}${PS_COLOR_RED}${PS_POS}${EXIT}${PS_ENDCOLOR}
     else
-        PS1+=${PS_PRE}'38;5;30'${PS_POS}${EXIT}${PS_ENDCOLOR}
+        PS1+=${PS_PRE}${PS_COLOR_GREEN}${PS_POS}${EXIT}${PS_ENDCOLOR}
     fi
-    PS1+=${PS_PRE}'38;5;16'${PS_POS}' >> '${PS_ENDCOLOR}
+    PS1+=${PS_PRE}${PS_COLOR_DARK}${PS_POS}' >> '${PS_ENDCOLOR}
 }
 
 # set your terminal background to #dddddd and foreground to #222222
