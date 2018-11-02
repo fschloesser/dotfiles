@@ -7,5 +7,7 @@ do
     cp ${HOME}/${FILE} ${FILE}
 done
 
+/etc/hosts misc/hosts
+
 crontab -l > crontab.bkup
 
