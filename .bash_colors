@@ -35,10 +35,10 @@ export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.
 
 # personal preferences
 PS_COLOR_DATETIME='38;5;245'
-PS_COLOR_USER='38;5;126'
-PS_COLOR_HOST='38;5;106'
-PS_COLOR_CURRDIR='38;5;12'
-PS_COLOR_GIT='38;5;136'
+PS_COLOR_USER='38;5;161'
+PS_COLOR_HOST='38;5;161'
+PS_COLOR_CURRDIR='38;5;30'
+PS_COLOR_GIT='38;5;105'
 
 PS_COLOR_DARK='38;5;245'
 PS_COLOR_RED='38;5;160'

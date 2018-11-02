@@ -35,7 +35,7 @@ export HISTFILESIZE=5000
 ##### Path
 ###########################
 export GOPATH="$HOME/go"
-export PATH="./:${PATH}:${HOME}/.local/bin:/bin:/usr/ucb:/usr/bin/X11:/usr/local/ssh/bin:/client/bin:$GOROOT/bin:$GOPATH/bin"
+export PATH="./:/nfs/optimi/usr/bin:${PATH}:${HOME}/.local/bin:/bin:/usr/ucb:/usr/bin/X11:/usr/local/ssh/bin:/client/bin:$GOROOT/bin:$GOPATH/bin"
 
 export INPUTRC=~/.inputrc
 
@@ -63,8 +63,8 @@ export LS_COLORS="di=1;34:ln=31:so=36:pi=33:ex=32:bd=1;33;40:cd=1;36;40:su=1;31;
 
 ## bring back US english
 export LANG=en_US.UTF-8
-# use english by default, fall back to german and then to spanish
-export LANGUAGE=en:de:es
+# use english by default, fall back to spanish and then to german
+export LANGUAGE=C:en:es:de
 # don't set this explicitly for a user - to be used in scripts
 # export LC_ALL=C
 
