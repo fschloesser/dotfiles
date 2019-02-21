@@ -14,6 +14,7 @@ export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.
 
 # for dark backgrounds
 #PS_COLOR_DATETIME='38;5;66'
+#PS_COLOR_VENV='38;5;66'
 #PS_COLOR_USER='38;5;169'
 #PS_COLOR_HOST='38;5;169'
 #PS_COLOR_CURRDIR='38;5;12'
@@ -21,6 +22,7 @@ export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.
 
 # for light backgrounds
 #PS_COLOR_DATETIME='38;5;245'
+#PS_COLOR_VENV='38;5;245'
 #PS_COLOR_USER='38;5;23'
 #PS_COLOR_HOST='38;5;23'
 #PS_COLOR_CURRDIR='38;5;32'
@@ -28,12 +30,22 @@ export GIT_REF="sh -c 'git describe --all 2> /dev/null' | sed 's|\([^/]*\)/\([^.
 
 # for light backgrounds
 #PS_COLOR_DATETIME='38;5;30'
+#PS_COLOR_VENV='38;5;30'
 #PS_COLOR_USER='38;5;161'
 #PS_COLOR_HOST='38;5;172'
 #PS_COLOR_CURRDIR='38;5;32'
 #PS_COLOR_GIT='38;5;105'
 
-# personal preferences
+# colorful personal preferences
+#PS_COLOR_VENV='38;5;16'
+#PS_COLOR_DATETIME='38;5;245'
+#PS_COLOR_USER='38;5;126'
+#PS_COLOR_HOST='38;5;106'
+#PS_COLOR_CURRDIR='38;5;12'
+#PS_COLOR_GIT='38;5;136'
+
+# simple personal preferences
+PS_COLOR_VENV='38;5;126'
 PS_COLOR_DATETIME='38;5;245'
 PS_COLOR_USER='38;5;161'
 PS_COLOR_HOST='38;5;161'
@@ -68,7 +80,7 @@ __prompt_command() {
     PS_CURRDIR='\w'
     PS_GIT='$(__git_ps1 "(%s)")'
 
-    PS1=${PYTHON_VIRTUALENV}
+    PS1=${PS_PRE}${PS_COLOR_VENV}${PS_POS}${PYTHON_VIRTUALENV}' '${PS_ENDCOLOR}
     PS1+=${PS_NEWLINE}
     PS1+=${PS_PRE}${PS_COLOR_DATETIME}${PS_POS}${PS_DATETIME}' '${PS_ENDCOLOR}
     PS1+=${PS_PRE}${PS_COLOR_USER}${PS_POS}${PS_USER}${PS_ENDCOLOR}

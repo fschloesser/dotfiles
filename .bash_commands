@@ -11,7 +11,7 @@ alias resolution_high="xrandr --output eDP-1 --mode 1920x1080"
 
 alias projector_activate='xrandr --output HDMI-2 --auto --left-of eDP-1'
 alias projector_deactivate='xrandr --output HDMI-2 --off'
-alias screen_activate='xrandr --output DP-2-1 --auto --left-of eDP-1'
+alias screen_activate='xrandr --output DP-2-1 --auto --left-of eDP-1 --rotate left'
 alias screen_deactivate='xrandr --output DP-2-1 --off'
 
 alias darklock="i3lock -f -c '222222'"
