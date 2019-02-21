@@ -28,8 +28,8 @@ shopt -s dotglob
 shopt -s histappend
 # length of history
 export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=5000
-export HISTFILESIZE=5000
+export HISTSIZE=25000
+export HISTFILESIZE=25000
 
 ###########################
 ##### Path

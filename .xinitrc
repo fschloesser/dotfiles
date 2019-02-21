@@ -7,6 +7,7 @@
 # setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
 setxkbmap us
 # make capslock yet another ctrl
+# to revert just type `setxkbmap -option`
 setxkbmap -option ctrl:nocaps
 # use xmodmap to configure easy German umlauts and sharp s
 
