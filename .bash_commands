@@ -16,10 +16,11 @@ alias screen_deactivate='xrandr --output DP-2-1 --off'
 
 alias darklock="i3lock -f -c '222222'"
 
+alias l='ls --color=auto'
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
-alias ll='ls -la --color=auto'
-alias l='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias lla='ls -la --color=auto'
 alias back='cd -'
 alias ..='cd ..'
 alias .2='cd ../..'
@@ -29,8 +30,8 @@ alias .5='cd ../../../../..'
 
 alias ungrep='grep -v --color -n'
 
-alias grep='grep --color -n'
-alias ngrep='grep -n --color -n'
+alias grep='grep --color'
+alias ngrep='grep --color -n'
 alias rgrep='rgrep -I --color -n'
 alias igrep='grep -i -I --color -n'
 alias rigrep='rgrep -i -I --color -n'
