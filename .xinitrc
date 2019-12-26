@@ -37,8 +37,8 @@
 # # Consult the keyboard(5) manual page.
 #
 # XKBMODEL="pc105"
-# XKBLAYOUT="us,us"
-# XKBVARIANT="fari,rus"
+# XKBLAYOUT="us,ru"
+# XKBVARIANT="fari,comon"
 # XKBOPTIONS="ctrl:nocaps,grp:alt_space_toggle"
 #
 # BACKSPACE="guess"
