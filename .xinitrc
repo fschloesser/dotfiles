@@ -61,7 +61,8 @@
 #fi
 
 
-systemctl --user enable dunst
+# notification service
+#systemctl --user enable dunst
 
 exec i3
 

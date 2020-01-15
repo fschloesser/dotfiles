@@ -6,6 +6,7 @@ alias vim="vim --servername vim"
 
 # TODO improve this
 
+alias resolution_lazy="xrandr --output eDP-1 --mode 1024x576"
 alias resolution_low="xrandr --output eDP-1 --mode 1360x768"
 alias resolution_high="xrandr --output eDP-1 --mode 1920x1080"
 
@@ -38,6 +39,8 @@ alias rigrep='rgrep -i -I --color -n'
 alias egrep='egrep --color -I -n'
 alias fgrep='fgrep --color -I -n'
 alias sourcebashrc='source ~/.bashrc'
+
+alias mplayeraudio='mplayer -novideo '
 
 function line() {
   cat $1 |head -n $2|tail -n 1
