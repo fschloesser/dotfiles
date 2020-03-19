@@ -153,8 +153,10 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# tray_output primary
 bar {
         status_command i3status
+        tray_output primary
 }
 
 # Custom Thinkpad key mappings
@@ -182,6 +184,7 @@ workspace 11 output HDMI-1
 # to disable projector
 # xrandr --output HDMI-2 --off
 
+# exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id nm-applet
 exec --no-startup-id xhost +local:
 exec --no-startup-id icedove

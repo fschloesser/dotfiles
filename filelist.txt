@@ -30,4 +30,3 @@
 .Xmodmap
 .Xresources
 .calendar/calendar
-.cups/lpoptions
