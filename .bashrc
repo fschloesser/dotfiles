@@ -70,3 +70,4 @@ export LANGUAGE=C:en:es:de
 
 # somehow the following line breaks scp... TODO
 #echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+trap "~/.bash_logout" exit

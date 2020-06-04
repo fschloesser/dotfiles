@@ -1,5 +1,15 @@
 [global_config]
+  broadcast_default = off
+  scroll_tabbar = True
+  homogeneous_tabbar = False
 [keybindings]
+[profiles]
+  [[default]]
+    background_color = "#cccccc"
+    background_darkness = 0.64
+    cursor_color = "#cc55aa"
+    foreground_color = "#222222"
+    scrollback_lines = 5000
 [layouts]
   [[default]]
     [[[child1]]]
@@ -9,9 +19,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    background_color = "#cccccc"
-    cursor_color = "#cc55aa"
-    foreground_color = "#222222"
-    scrollback_lines = 5000
