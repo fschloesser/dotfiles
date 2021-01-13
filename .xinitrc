@@ -63,6 +63,9 @@
 
 # notification service
 #systemctl --user enable dunst
-xrdb ~/.Xresources
+#
+. /etc/X11/Xsession
+
+#xrdb ~/.Xresources
 exec i3  --shmlog-size=26214400
 
