@@ -6,11 +6,7 @@ filetype plugin on
 filetype indent on
 
 " clipboard support
-if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
-else
-  set clipboard=unnamedplus "Linux
-endif
+set clipboard=unnamedplus
 " no compatible mode
 set nocp
 "set relativenumber
@@ -25,13 +21,6 @@ set tags=./tags,./TAGS,tags,TAGS,~/.TAGS;
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Highlight cursor line
-set cursorline
-" :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-" :hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-" :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-
 " Set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
 
@@ -111,7 +100,6 @@ set encoding=utf8
 " color the 100th column, useful for conventions
 highlight ColorColumn ctermbg=gray
 set colorcolumn=100
-set textwidth=50000
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -187,13 +175,9 @@ set history=500
 " Use spaces instead of tabs
 set expandtab
 
-" Be smart when using tabs ;)
-set smarttab
 
-" 1 tab == 2 spaces
-set shiftwidth=2
-set tabstop=2
-" set softtabstop=2
+set list
+set listchars=tab:>-     " > is shown at the beginning, - throughout
 
 " Linebreak on 500 characters
 set lbr
@@ -279,7 +263,7 @@ endif
 """"""""""""""""""""""""""""""""""""""
 
 " conf for special files
-autocmd FileType rst,sh setlocal ts=3 sts=3 sw=3 expandtab smarttab
-autocmd FileType md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
+autocmd FileType md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
-
+autocmd FileType awk,sh setlocal ts=4 sts=4 sw=4 expandtab smarttab

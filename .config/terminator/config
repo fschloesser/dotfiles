@@ -5,10 +5,10 @@
 [keybindings]
 [profiles]
   [[default]]
-    background_color = "#cccccc"
+    background_color = "#ffffff"
     background_darkness = 0.64
     cursor_color = "#cc55aa"
-    foreground_color = "#222222"
+    foreground_color = "#000000"
     scrollback_lines = 5000
 [layouts]
   [[default]]

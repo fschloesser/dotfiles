@@ -34,10 +34,10 @@ XTerm*renderFont: true
 ! disable bold font faces, instead make text light blue.
 XTerm*colorBDMode: true
 XTerm*colorBD: rgb:82/a4/d3
+
 ! disable underlined text, instead make it white.
 XTerm*colorULMode: true
 XTerm*colorUL: rgb:e4/e4/e4
 ! similarly use colorIT for italics
-
 
 Xcursor.size: 64
