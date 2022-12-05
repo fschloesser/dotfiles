@@ -2,6 +2,7 @@
   broadcast_default = off
   scroll_tabbar = True
   homogeneous_tabbar = False
+  invert_search = True
 [keybindings]
 [profiles]
   [[default]]

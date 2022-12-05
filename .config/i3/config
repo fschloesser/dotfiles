@@ -188,7 +188,7 @@ workspace 11 output HDMI-1
 # exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id nm-applet
 exec --no-startup-id xhost +local:
-exec --no-startup-id icedove
+exec --no-startup-id thunderbird
 
 # exec --no-startup-id xsetroot -solid "#333333"
 

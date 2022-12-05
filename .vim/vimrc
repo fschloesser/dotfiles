@@ -264,6 +264,6 @@ endif
 
 " conf for special files
 autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
-autocmd FileType md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType c,h,cpp,md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
-autocmd FileType awk,sh setlocal ts=4 sts=4 sw=4 expandtab smarttab
+autocmd FileType cmake,txt,groovy,awk,sh setlocal ts=4 sts=4 sw=4 expandtab smarttab

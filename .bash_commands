@@ -4,6 +4,7 @@ shopt -s expand_aliases
 
 alias vim="vim --servername vim"
 alias play="mplayer -framedrop"
+alias rm="rm -i"
 
 # TODO improve this
 
