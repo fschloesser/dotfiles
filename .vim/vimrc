@@ -18,6 +18,9 @@ set pastetoggle=<F5>
 " Tags
 set tags=./tags,./TAGS,tags,TAGS,~/.TAGS;
 
+" Addons
+" https://github.com/fico-xpress/mosel-vim-plugin
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,21 +81,9 @@ set tm=500
 syntax enable
 
 " colorscheme: https://github.com/reedes/vim-colors-pencil/blob/master/colors/pencil.vim
-colorscheme pencil
-" colorscheme peachpuff
-
-if has('termguicolors')
-    set termguicolors
-endif
-" change the colorscheme on nightfall to dark, on sunrise to light
-let hour = (strftime('%H'))
-if hour >= 18
-    set background=dark
-elseif hour >= 10
-    set background=light
-elseif hour >= 0
-    set background=dark
-endif
+" delek industry pablo desert koehler ron slate
+" delek desert koehler ron slate
+colorscheme desert
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -264,6 +255,6 @@ endif
 
 " conf for special files
 autocmd FileType rst setlocal ts=3 sts=3 sw=3 expandtab smarttab
-autocmd FileType c,h,cpp,md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex setlocal ts=2 sts=2 sw=2 expandtab smarttab
+autocmd FileType c,h,cpp,md,markdown,htmldjango,xml,xhtml,html,htm,yaml,yml,sls,javascript,js,css,sh,tex,mos setlocal ts=2 sts=2 sw=2 expandtab smarttab
 autocmd FileType c,h set formatoptions=croql nocindent comments=sr:/*,mb:*,el:*/,:// tabstop=3 shiftwidth=3
 autocmd FileType cmake,txt,groovy,awk,sh setlocal ts=4 sts=4 sw=4 expandtab smarttab
