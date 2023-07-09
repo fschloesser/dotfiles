@@ -43,6 +43,9 @@
 #
 # BACKSPACE="guess"
 
+# restart by executing
+# sudo udevadm trigger --subsystem-match=input --action=change
+
 ###########################
 ##### Keyboard quick
 ###########################

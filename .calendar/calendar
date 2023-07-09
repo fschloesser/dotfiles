@@ -1,22 +1,6 @@
 
 #include <de_DE/calendar.feiertag>
-#include <de_DE/calendar.geschichte>
-#include <de_DE/calendar.kirche>
-#include <de_DE/calendar.literatur>
-#include <de_DE/calendar.musik>
-#include <de_DE/calendar.wissenschaft>
-#include <calendar.argentina>
-#include <calendar.birthday>
-#include <calendar.christian>
-#include <calendar.computer>
-#include <calendar.eu>
-#include <calendar.french>
-#include <calendar.history>
-#include <calendar.lotr>
-#include <calendar.music>
-#include <calendar.russian>
 
 #include "calendar.geburtstage"
-#include "calendar.arbeit.2019"
 #include "calendar.2019"
 

@@ -1,6 +1,3 @@
-[user]
-    name = Franziska Schloesser
-    email = schloesser@zib.de
 [core]
     editor = vim
 [color]
@@ -25,8 +22,18 @@
     alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
 [push]
-	default = simple
+    default = simple
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [pull]
-	ff = only
+    ff = only
+[init]
+    defaultBranch = master
+[inspector]
+    format = html
+    hard = true
+    list-file-types = true
+    metrics = true
+    responsibilities = true
+    timeline = true
+    weeks = true

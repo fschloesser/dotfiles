@@ -35,7 +35,7 @@ export HISTFILESIZE=25000
 ##### Path
 ###########################
 export GOPATH="$HOME/go"
-export PATH="/nfs/optimi/usr/bin:${HOME}/.local/bin:/bin:/usr/bin/X11:/usr/local/ssh/bin:$GOPATH/bin:/home/franzi/software/povray/bin:/usr/local/bin"
+export PATH="${HOME}/.local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/local/ssh/bin:$GOPATH/bin:/home/franzi/software/povray/bin:/usr/local/bin:/usr/games"
 
 export INPUTRC=~/.inputrc
 
